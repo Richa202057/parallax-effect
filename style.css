@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrapper{
+   height:100vh; /* height of wrapper is 100 vh*/
+   overflow-x: hidden; /* to hide the the overflowed content in x-direction */
+   overflow-y: auto;
+   perspective: 100px; /* to use z axis firtly activate the perspection */ 
+
+}
+
+.container{
+    position: relative; /* it sholud be non-static so that we can use absolute positioning for backgroung and foregroung images 
+                            for overlapping both images*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d; /* we want to use 3d in container so, use transform-style property with preserve-3d value */
+    height: 100%;
+   z-index: -1;
+
+}
+
+
+
+
+.background , .foreground{
+    position: absolute;  /* position both the elements w.r.t container , due to this positioning of both element will be same 
+                           so, both elements will overlap on each other */
+    z-index: -1; /* due to this z-index of h1 tag becomes greater than these two so it comes be in front of web page as default 
+                       value of any elements's z-index is 0 */
+                
+    height: 100%;/* we want height and width of both elements to be equal to it's container */
+    width: 100%;
+    object-fit: cover;
+   
+}
+
+/* parallex effect */
+/* we want the foreground image - man image more nearer to our eyes then background image */
+/* the distance b/w our eyes and the image this is a z-axis so, applying css properties on z-axis*/
+.background{
+    transform: translateZ(-120px) scale(2.5); /* apni screen se background image ko dur krne ke liye */    
+}
+
+.foreground{
+    transform: translateZ(-40px) scale(1.4);
+}
+/* Now background image is -120px far from the screen , foreground image is 40px far from the screen and 
+heading is at 0 distance of screen means heading is no distance from screen 
+Bcz of this parallex effect will be generated when we scroll down the web page , 
+As heading is more closer to our eyes( which is +ve z-direction / outside of web page) so on scrolling web page 
+heading will move normally but 
+foreground image will move slowly then heading 
+and since background image  is farthest from our eyes (moved in the backward direction of screen) 
+so , background image will move  slower then foreground image  on scrolling the web page.
+*/
+
+/* designing in heading tag */
+h1{
+    position: absolute;
+    top: 5rem;
+    font-size: 10rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 4px;
+}
+
+section{
+    background-color: rgb(45,45,45);
+    color: white;
+    padding: 5rem 0;
+
+}
+.bg1{
+    background-image:url(sport-1.jpg);
+}
+
+.bg2{
+    background-image:url(sport-2.jpg);
+}
+
+.bg3{
+    background-image:url(sport-3.jpg);
+}
+
+.sechead{
+    font-family:'Poppins', sans-serif;
+    font-size: 5rem;
+    padding: 0 10rem;
+    
+}
+p{
+    font-size: 1.5rem;
+    padding: 0 10rem;
+    margin: 5rem 0;
+}
+.bg{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-size: cover;  /* so that whole image will be displayed on screen */
+    background-attachment: fixed; /*background image ko fixed krne se image ek jagah fixed ho jaayegi and scroll krne se uske upar dusri chize aa jayengi  */
+    /*if we not use this then on scrooling image will also scroll up and down and due to this attachment image gets fixed  */
+    background-position: center;/* to bring image at center */
+}
+.subhead{
+position: absolute;
+background-color: white;
+color: black;
+font-size: 56px;
+font-family:'Poppins', sans-serif;
+padding: 1rem 2.5rem;
+top: 40%;
+left: 50%;
+transform: translate(-40%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
